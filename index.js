@@ -3,79 +3,84 @@ const capitalize = (string) => string.split('')[0].toUpperCase() + string.slice(
 const stringReverse = (string) => string.split('').reverse().join('');
 
 const calculator = {
-  add: (a, b) => {
-    return a + b;
-  },
-  subtract: (a, b) => {
-    return a - b;
-  },
-  divide: (a, b) => {
-    return a / b;
-  },
-  multiply: (a, b) => {
-    return a * b;
-  }
+  add: (a, b) => a + b,
+  subtract: (a, b) => a - b,
+  divide: (a, b) => a / b,
+  multiply: (a, b) => a * b,
 };
 
 const caeser = (string, number) => {
-
-  let checkCapital = (letter) => {
-    let ascii = letter.charCodeAt()
-    if (65 <= ascii && ascii <= 90) {
-      return true
+  const checkCapital = (letter) => {
+    const ascii = letter.charCodeAt();
+    if (ascii >= 65 && ascii <= 90) {
+      return true;
     }
-    return false
-  }
-  let isAlphabet = (letter) => {
-    let ascii = letter.charCodeAt()
-    if (65 <= ascii && ascii <= 90 || 97 <= ascii && ascii <= 122) {
-      return true
+    return false;
+  };
+  const isAlphabet = (letter) => {
+    const ascii = letter.charCodeAt();
+    if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)) {
+      return true;
     }
-    return false
-
-  }
-  let getLetterFromOrder = (number, isCapital) => {
+    return false;
+  };
+  const getLetterFromOrder = (num, isCapital) => {
     if (isCapital) {
-      return String.fromCharCode(number + 64);
-    } else {
-      return String.fromCharCode(number + 96);
+      return String.fromCharCode(num + 64);
     }
-  }
+    return String.fromCharCode(num + 96);
+  };
 
-  let getLetterOrder = (letter) => {
-    let ascii = letter.charCodeAt()
+  const getLetterOrder = (letter) => {
+    const ascii = letter.charCodeAt();
     if (ascii <= 91) {
       return ascii - 64;
-    } else {
-      return ascii - 96;
     }
-  }
-  let rotate = (letterOrder, number) => {
-    if ((letterOrder + number) % 26 == 0) {
+    return ascii - 96;
+  };
+  const rotate = (letterOrder, num) => {
+    if ((letterOrder + num) % 26 === 0) {
       return 26;
     }
-    return (letterOrder + number) % 26;
-  }
-  let result = []
+    return (letterOrder + num) % 26;
+  };
+  const result = [];
   let letter;
-  for (let i = 0; i < string.length; i++) {
-    letter = string.charAt(i)
+  for (let i = 0; i < string.length; i += 1) {
+    letter = string.charAt(i);
     if (!isAlphabet(letter)) {
-      result.push(letter)
+      result.push(letter);
     } else {
-      let isCapital = checkCapital(letter)
-      let order = getLetterOrder(letter)
-      let newLetterOrder = rotate(order, number);
-      let newLetter = getLetterFromOrder(newLetterOrder, isCapital)
-      result.push(newLetter)
+      const isCapital = checkCapital(letter);
+      const order = getLetterOrder(letter);
+      const newLetterOrder = rotate(order, number);
+      const newLetter = getLetterFromOrder(newLetterOrder, isCapital);
+      result.push(newLetter);
     }
   }
-  return result.join("")
-}
+  return result.join('');
+};
+
+
+const arrayAnalysis = (array) => {
+  const average = Math.floor((array.reduce((a, b) => a + b)) / array.length);
+  const min = Number(array.sort((a, b) => a - b).slice(0, 1));
+  const max = Number(array.sort((a, b) => a - b).pop());
+  const { length } = array;
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
+};
+
 
 module.exports = {
   capitalize,
   stringReverse,
   calculator,
-  caeser
+  caeser,
+  arrayAnalysis,
 };
