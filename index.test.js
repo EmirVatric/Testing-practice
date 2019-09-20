@@ -57,5 +57,5 @@ test('It returns biggest number in array', () => {
 });
 
 test('It returns length of the array', () => {
-  expect(arrayAnalysis([1, 2, 3]).length).toBe(2);
+  expect(arrayAnalysis([1, 2, 3]).length).toBe(3);
 });
