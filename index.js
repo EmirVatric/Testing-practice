@@ -2,20 +2,20 @@ const capitalize = (string) => string.split('')[0].toUpperCase() + string.slice(
 
 const stringReverse = (string) => string.split('').reverse().join('');
 
-const Calculator = () => {
-  const add = (a, b) => a + b;
-  const substract = (a, b) => a - b;
-  const multiply = (a, b) => a * b;
-  const divide = (a, b) => a / b;
-
-
-  return {
-    add,
-    substract,
-    multiply,
-    divide,
-  };
+const calculator = {
+  add: (a, b) => {
+    return a + b;
+  },
+  subtract: (a, b) => {
+    return a - b;
+  },
+  divide: (a, b) => {
+    return a / b;
+  },
+  multiply: (a, b) => {
+    return a * b;
+  }
 };
 
 
-module.exports = { capitalize, stringReverse, Calculator };
+module.exports = { capitalize, stringReverse, calculator };
