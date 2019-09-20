@@ -64,14 +64,15 @@ const caeser = (string, number) => {
 
 const arrayAnalysis = (array) => {
   const {
-    length
+    length,
   } = array;
   const average = parseFloat(((array.reduce((a, b) => a + b)) / array.length).toFixed(2));
-  array.sort((a, b) => a - b)
-  let min, max;
+  array.sort((a, b) => a - b);
+  let min;
+  let max;
   if (length === 1) {
-    min = array[0]
-    max = array[0]
+    [min] = array;
+    max = min;
   } else {
     min = Number(array.slice(0, 1));
     max = Number(array.pop());
